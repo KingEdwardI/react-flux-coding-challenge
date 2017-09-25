@@ -1,0 +1,10 @@
+# Mac Finder files
+.DS_Store
+._.DS_Store
+
+# vim
+*.swp
+
+# Dependency detritus
+node_modules
+
