@@ -16,15 +16,15 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony&insertPragma=React.DOM']},
-      {test: /\.es6\.js$/, loader: 'es6-loader'},
+      { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony&insertPragma=React.DOM'] },
+      { test: /\.es6\.js$/, loader: 'es6-loader' },
 
       // compile and include less files
-      {test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader'},
+      { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader' },
 
       // allow less files to load urls pointing to font assets
       // @TODO: figure out why this is necessary and do it better
-      {test: /\.(woff|ttf|eot|svg)$/, loader: 'file-loader' }
+      { test: /\.(woff|ttf|eot|svg)$/, loader: 'file-loader' }
     ]
   },
   resolve : {

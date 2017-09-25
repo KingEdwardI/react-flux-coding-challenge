@@ -6,46 +6,46 @@ var ExampleActions = require('actions/ExampleActions');
 var SubComponent = require('./SubComponent');
 
 var getState = function() {
-  return {
-    message  : ExampleStore.message
-  };
+    return {
+        message  : ExampleStore.message
+    };
 };
 
 var counter = 0;
 
 var Application = React.createClass({
 
-  getInitialState : function() {
-    return getState();
-  },
+    getInitialState : function() {
+        return getState();
+    },
 
-  componentDidMount : function() {
-    ExampleStore.addChangeListener(this._onChange);
-  },
+    componentDidMount : function() {
+        ExampleStore.addChangeListener(this._onChange);
+    },
 
-  componentWillUnmount : function() {
-    ExampleStore.removeChangeListener(this._onChange);
-  },
+    componentWillUnmount : function() {
+        ExampleStore.removeChangeListener(this._onChange);
+    },
 
-  _onChange : function() {
-    this.setState(getState());
-  },
+    _onChange : function() {
+        this.setState(getState());
+    },
 
-  _sendMessage : function() {
-    ExampleActions.sendMessage('hello world! ' + counter++);
-  },
+    _sendMessage : function() {
+        ExampleActions.sendMessage('hello world! ' + counter++);
+    },
 
-  render : function() {
-    return (
-      <div>
-        <h1>Hello World!</h1>
-        <h2>You can edit stuff in here and it will hot update</h2>
-        <button onClick={this._sendMessage}>Send Message</button>
+    render : function() {
+        return (
+            <div>
+                <h1>Hello World!</h1>
+                <h2>You can edit stuff in here and it will hot update</h2>
+                <button onClick={this._sendMessage}>Send Message</button>
 
-        <SubComponent message={this.state.message} />
-      </div>
-    );
-  }
+                <SubComponent message={this.state.message} />
+            </div>
+        );
+    }
 
 });
 
