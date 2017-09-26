@@ -22,13 +22,14 @@ class _Main extends React.Component {
   }
 
   render() {
-    console.log('in the render', this)
     return (
       <div>
         <AppBar title="React Flux Users Challenge" />
-        <List>
-          <ListItem><Link to="/add_user">Add User</Link> | <Link to="/users">Users</Link></ListItem>
-        </List>
+        { /*
+            * <List>
+              *   <ListItem><Link to="/add_user">Add User</Link> | <Link to="/users">Users</Link></ListItem>
+              * </List>
+            */ }
         <h1> Add User </h1>
         <AddUser />
         <hr/>

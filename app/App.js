@@ -19,8 +19,6 @@ render((
     <Router>
       <div>
         <Route exact path="/" component={Main}/>
-        <Route path="/users" component={DisplayUsers}/>
-        <Route path="/add_user" component={AddUser}/>
       </div>
     </Router>
   </MuiThemeProvider>

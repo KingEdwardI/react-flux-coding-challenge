@@ -7,6 +7,7 @@ import AppBar from 'material-ui/AppBar';
 import { Toolbar, ToolbarTitle } from 'material-ui/Toolbar';
 import { List, ListItem } from 'material-ui/List';
 
+import UserDisplay from './UserDisplay.jsx';
 class _DisplayUsers extends Component {
   static getStores() {
     return [AppStore];
@@ -14,20 +15,25 @@ class _DisplayUsers extends Component {
 
   static calculateState() {
     return {
-      sample: AppStore.getState()
+      users: AppStore.getState()
     };
   }
 
-  componentDidMount() {
-  }
-
   render() {
-    let shit = this.state.sample.map((x, i) => <div key={i}><p>{ x.one }</p><p>{ x.two }</p></div>)
+    let users = this.state.users.map(user => { 
+      return (
+        <UserDisplay
+          fName={user.firstName}
+          lName={user.lastName}
+          addr={user.address}
+          key={user.firstName+user.lastName+user.address}
+        />
+      )
+    })
+
     return (
       <div>
-        <List>
-        {shit}
-        </List>
+        {users.length ? users : 'Please add Users for display'}
       </div>
     );
   }

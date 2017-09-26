@@ -3,11 +3,8 @@ import { Link } from 'react-router-dom'
 
 class UserDisplay extends Component {
 
-  static propTypes = {
-    title: PropTypes.string.isRequired
-  }
-
   state = {
+
   }
 
   handleClick = (event) => {
@@ -15,14 +12,12 @@ class UserDisplay extends Component {
   }
 
   render() {
+    let { fName, lName, addr } = this.props;
     return (
       <div>
-        <h1>Hello</h1>
-        <p>{this.props.title}</p>
-        <div onClick={this.handleClick}></div>
-        <div><Link to="/">Top</Link></div>
-        <div><Link to="/sample1">Sample1</Link></div>
-        <div><Link to="/sample2">Sample2</Link></div>
+        <p>{fName}</p>
+        <p>{lName}</p>
+        <p>{addr}</p>
       </div>
     );
   }
