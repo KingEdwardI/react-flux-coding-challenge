@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 
 import SampleStore from '../stores/AppStore';
 import DisplayUsers from './DisplayUsers.jsx';
+import AddUser from './AddUser.jsx';
 
 class _Main extends React.Component {
   static getStores() {
@@ -26,9 +27,11 @@ class _Main extends React.Component {
       <div>
         <AppBar title="React Flux Users Challenge" />
         <List>
-          <ListItem><Link to="/">Add User</Link></ListItem>
-          <ListItem><Link to="/users">Users</Link></ListItem>
+          <ListItem><Link to="/add_user">Add User</Link> | <Link to="/users">Users</Link></ListItem>
         </List>
+        <h1> Add User </h1>
+        <AddUser />
+        <hr/>
         <h1> Users </h1>
         <DisplayUsers />
       </div>

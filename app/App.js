@@ -7,7 +7,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Main from './components/Main.jsx';
-import DisplayUsers from './components/DisplayUsers.jsx'
+import DisplayUsers from './components/DisplayUsers.jsx';
+import AddUser from './components/AddUser.jsx';
 
 injectTapEventPlugin();
 
@@ -19,6 +20,7 @@ render((
       <div>
         <Route exact path="/" component={Main}/>
         <Route path="/users" component={DisplayUsers}/>
+        <Route path="/add_user" component={AddUser}/>
       </div>
     </Router>
   </MuiThemeProvider>

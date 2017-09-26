@@ -1,28 +1,44 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-class AddUser extends Component {
+import UserActionCreators from '../actions/UserActionCreators';
 
-  static propTypes = {
-    title: PropTypes.string.isRequired
-  }
+class AddUser extends React.Component {
 
   state = {
+    firstName: '',
+    lastName: '',
+    address: ''
   }
 
-  handleClick = (event) => {
-    console.log(event);
+  handleSubmit(evt) {
+    evt.preventDefault();
+    UserActionCreators.addUser(this.state) 
   }
 
   render() {
     return (
       <div>
-        <h1>Hello</h1>
-        <p>{this.props.title}</p>
-        <div onClick={this.handleClick}></div>
-        <div><Link to="/">Top</Link></div>
-        <div><Link to="/sample1">Sample1</Link></div>
-        <div><Link to="/sample2">Sample2</Link></div>
+        <form onSubmit={(evt) => { this.handleSubmit(evt) }}>
+          <input
+            type="text"
+            placeholder="First Name"
+            onChange={(evt) => { this.state.firstName = evt.target.value }}
+          />
+          <br/>
+          <input
+            type="text"
+            placeholder="Last Name"
+            onChange={(evt) => { this.state.lastName = evt.target.value }}
+          />
+          <br/>
+          <input
+            type="text"
+            placeholder="Address"
+            onChange={(evt) => { this.state.address = evt.target.value }}
+          />
+          <br/>
+          <input type="submit" value="Create User"/>
+        </form>
       </div>
     );
   }
