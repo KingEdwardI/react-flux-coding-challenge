@@ -13,6 +13,7 @@ class AddUser extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    this.setState({ id: this.state.id + 1 });
     UserActionCreators.addUser(this.state);
   }
 

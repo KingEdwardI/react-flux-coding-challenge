@@ -10,10 +10,10 @@ const UserActionCreators = {
     });
   },
 
-  deleteUser: function(user) {
+  deleteUser: function(id) {
     AppDispatcher.dispatch({
       type: ActionTypes.DELETE_USER,
-      data: user,
+      data: id,
     });
   },
 
