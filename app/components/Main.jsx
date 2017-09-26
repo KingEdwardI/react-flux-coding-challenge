@@ -1,0 +1,40 @@
+import React from 'react';
+import AppBar from 'material-ui/AppBar';
+import { Toolbar, ToolbarTitle } from 'material-ui/Toolbar';
+import { List, ListItem } from 'material-ui/List';
+import { render } from 'react-dom';
+import { Container } from 'flux/utils';
+import { Link } from 'react-router-dom'
+
+import SampleStore from '../stores/AppStore';
+import DisplayUsers from './DisplayUsers.jsx';
+
+class _Main extends React.Component {
+  static getStores() {
+    return [SampleStore];
+  }
+
+  static calculateState() {
+    return {
+      sample: SampleStore.getState()
+    };
+  }
+
+  render() {
+    console.log('in the render', this)
+    return (
+      <div>
+        <AppBar title="React Flux Users Challenge" />
+        <List>
+          <ListItem><Link to="/">Add User</Link></ListItem>
+          <ListItem><Link to="/users">Users</Link></ListItem>
+        </List>
+        <h1> Users </h1>
+        <DisplayUsers />
+      </div>
+    );
+  }
+}
+
+const Main = Container.create(_Main);
+export default Main;

@@ -1,38 +1,39 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const path = require('path');
 
-module.exports = {
-  context : __dirname,
-  entry : [
-    'webpack/hot/dev-server',
-    './app/components/Application'
-  ],
-  output : {
-    path: __dirname,
-    filename: 'bundle.js'
+const config = {
+  devtool: "inline-source-map",
+  entry:  path.resolve(__dirname, "app/App.js"),
+  output: {
+    path: path.resolve(__dirname, "public/js/"),
+    publicPath: "/js/",
+    filename: "bundle.js"
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
   module: {
-    loaders: [
-      { test: /\.jsx$/, loaders: ['react-hot', 'jsx-loader?harmony&insertPragma=React.DOM'] },
-      { test: /\.es6\.js$/, loader: 'es6-loader' },
-
-      // compile and include less files
-      { test: /\.less$/, loader: 'style-loader!css-loader!autoprefixer-loader!less-loader' },
-
-      // allow less files to load urls pointing to font assets
-      // @TODO: figure out why this is necessary and do it better
-      { test: /\.(woff|ttf|eot|svg)$/, loader: 'file-loader' }
-    ]
+    rules: [{
+      test: /.jsx?$/,
+      exclude: [path.resolve(__dirname, "node_modules")],
+      loader: "babel-loader",
+      query: {
+        presets: ["env","react","stage-0"]
+      }
+    }]
   },
-  resolve : {
-    extensions: ['', '.js', '.es6.js', '.jsx'],
-    alias : {
-      actions : __dirname + '/app/actions',
-      constants : __dirname + '/app/constants',
-      stores : __dirname + '/app/stores'
-    }
-  }
+  devServer: {
+    contentBase: path.resolve(__dirname, "public"),
+    historyApiFallback: true,
+    compress: true, 
+  },
+}
+
+if (process.env.NODE_ENV === 'production') {
+  config.devtool = false;
+  config.plugins = [
+    new webpack.optimize.UglifyJsPlugin({comments: false}),
+    new webpack.DefinePlugin({
+      'process.env': {NODE_ENV: JSON.stringify('production')}
+    })
+  ];
 };
+
+module.exports = config;
