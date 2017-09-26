@@ -13,12 +13,12 @@ class UserDisplay extends React.Component {
   };
 
 
-  handleDelete = () => {
+  handleDelete() {
     UserActionCreators.deleteUser(this.state.id);
   }
 
   // update the user and switch out of 'updating' mode
-  handleUpdate = () => {
+  handleUpdate() {
     UserActionCreators.updateUser({
       firstName: this.state.fName,
       lastName: this.state.lName,
@@ -29,7 +29,7 @@ class UserDisplay extends React.Component {
   }
 
   // cancel the update and reset the state
-  handleCancel = () => {
+  handleCancel() {
     this.setState({
       updating: false,
       fName: this.props.fName,
