@@ -15,9 +15,9 @@ class AppStore extends ReduceStore {
       return [ ...state.concat(action.data) ];
 
     case ActionTypes.DELETE_USER:
-      let toRemoveIndex = state.findIndex(user => user.id === action.data);
+      if (state.length === 1) { return []; }
       return [
-        ...state.splice(toRemoveIndex, 0),
+        ...state.filter(user => user.id !== action.data)
       ];
 
     case ActionTypes.UPDATE_USER:

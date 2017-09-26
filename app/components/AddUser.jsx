@@ -19,7 +19,7 @@ class AddUser extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="addUser">
         <form onSubmit={ (evt) => { this.handleSubmit(evt); } }>
           <input
             type="text"

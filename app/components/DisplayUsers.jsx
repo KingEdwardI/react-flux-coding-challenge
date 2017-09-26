@@ -29,7 +29,7 @@ class _DisplayUsers extends React.Component {
     });
 
     return (
-      <div>
+      <div className="displayUsers">
         {users.length ? users : 'Please add Users for display'}
       </div>
     );

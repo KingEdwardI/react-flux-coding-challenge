@@ -13,7 +13,8 @@ class _Main extends React.Component {
 
   static calculateState() {
     return {
-      nextId: AppStore.getState().length
+      nextId: AppStore.getState().length,
+      isAddingUser: false
     };
   }
 
@@ -21,16 +22,24 @@ class _Main extends React.Component {
     return (
       <div>
         <AppBar title="React Flux Users Challenge" />
-        { /*
-            * <List>
-              *   <ListItem><Link to="/add_user">Add User</Link> | <Link to="/users">Users</Link></ListItem>
-              * </List>
-            */ }
-        <h1> Add User </h1>
-        <AddUser id={ this.state.nextId }/>
-        <hr />
-        <h1> Users </h1>
-        <DisplayUsers />
+        <div className="main">
+          <h1>
+            Add User
+            { !this.state.isAddingUser ? 
+              <span onClick={ () => { this.setState({ isAddingUser : !this.state.isAddingUser }); } }> + </span>
+              :
+              <span onClick={ () => { this.setState({ isAddingUser : !this.state.isAddingUser }); } }> - </span>
+            }
+          </h1>
+          { this.state.isAddingUser ?
+            <AddUser id={ this.state.nextId } />
+            :
+            ''
+          }
+          <hr />
+          <h1> Users </h1>
+          <DisplayUsers />
+        </div>
       </div>
     );
   }
