@@ -8,6 +8,7 @@ class AddUser extends React.Component {
     firstName: '',
     lastName: '',
     address: '',
+    id: this.props.id,
   }
 
   handleSubmit(evt) {

@@ -2,17 +2,18 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import { Container } from 'flux/utils';
 
-import SampleStore from '../stores/AppStore';
+import AppStore from '../stores/AppStore';
 import DisplayUsers from './DisplayUsers';
 import AddUser from './AddUser';
 
 class _Main extends React.Component {
   static getStores() {
-    return [SampleStore];
+    return [AppStore];
   }
 
   static calculateState() {
     return {
+      nextId: AppStore.getState().length
     };
   }
 
@@ -26,7 +27,7 @@ class _Main extends React.Component {
               * </List>
             */ }
         <h1> Add User </h1>
-        <AddUser />
+        <AddUser id={ this.state.nextId }/>
         <hr />
         <h1> Users </h1>
         <DisplayUsers />

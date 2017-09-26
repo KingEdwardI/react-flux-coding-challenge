@@ -8,14 +8,18 @@ class AppStore extends ReduceStore {
   }
 
   reduce(state, action) {
+
     switch (action.type) {
+
     case ActionTypes.ADD_USER:
       return [ ...state.concat(action.data) ];
+
     case ActionTypes.DELETE_USER:
       let toRemoveIndex = state.findIndex(user => user.id === action.data);
       return [
         ...state.splice(toRemoveIndex, 0),
       ];
+
     case ActionTypes.UPDATE_USER:
       let replUser = action.data;
       let toReplaceIndex = state.findIndex(user => user.id === replUser.id);
@@ -24,6 +28,7 @@ class AppStore extends ReduceStore {
         replUser,
         ...state.slice(toReplaceIndex + 1)
       ];
+
     default:
       return state;
     }

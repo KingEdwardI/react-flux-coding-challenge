@@ -2,38 +2,54 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  devtool: "inline-source-map",
-  entry:  path.resolve(__dirname, "app/App.js"),
+  devtool: 'inline-source-map',
+  entry:  path.resolve(__dirname, 'app/App.js'),
   output: {
-    path: path.resolve(__dirname, "public/js/"),
-    publicPath: "/js/",
-    filename: "bundle.js"
+    path: path.resolve(__dirname, 'public/js/'),
+    publicPath: '/js/',
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx' ],
   },
   module: {
-    rules: [{
-      test: /.jsx?$/,
-      exclude: [path.resolve(__dirname, "node_modules")],
-      loader: "babel-loader",
-      query: {
-        presets: ["env","react","stage-0"]
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['react', 'es2015', 'stage-1'],
+          plugins: [ 'transform-decorators-legacy' ]
+        }
       }
-    }]
+    ],
+    rules: [
+      {
+        test: /.jsx?$/,
+        exclude: [path.resolve(__dirname, 'node_modules')],
+        loader: 'babel-loader',
+        query: {
+          presets: ['env', 'react', 'stage-0']
+        }
+      }
+    ]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "public"),
+    contentBase: path.resolve(__dirname, 'public'),
     historyApiFallback: true,
     compress: true, 
   },
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
   config.devtool = false;
   config.plugins = [
-    new webpack.optimize.UglifyJsPlugin({comments: false}),
+    new webpack.optimize.UglifyJsPlugin({ comments: false }),
     new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')}
+      'process.env': { NODE_ENV: JSON.stringify('production') }
     })
   ];
-};
+}
 
 module.exports = config;

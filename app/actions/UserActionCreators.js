@@ -1,5 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import { ActionTypes } from '../constants/AppConstants';
+import ActionTypes from '../constants/AppConstants';
 
 const UserActionCreators = {
 
