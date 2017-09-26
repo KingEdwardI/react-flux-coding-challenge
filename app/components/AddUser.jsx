@@ -7,7 +7,7 @@ class AddUser extends React.Component {
   state = {
     firstName: '',
     lastName: '',
-    address: ''
+    address: '',
   }
 
   handleSubmit(evt) {

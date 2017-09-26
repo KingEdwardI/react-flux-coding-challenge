@@ -17,7 +17,6 @@ class _Main extends React.Component {
 
   static calculateState() {
     return {
-      sample: SampleStore.getState()
     };
   }
 

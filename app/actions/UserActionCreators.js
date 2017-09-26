@@ -11,9 +11,15 @@ const UserActionCreators = {
   },
 
   deleteUser: function(user) {
-    console.log('delete', user)
     AppDispatcher.dispatch({
       type: ActionTypes.DELETE_USER,
+      data: user,
+    });
+  },
+
+  updateUser: function(user) {
+    AppDispatcher.dispatch({
+      type: ActionTypes.UPDATE_USER,
       data: user,
     });
   }

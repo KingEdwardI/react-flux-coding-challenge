@@ -5,7 +5,7 @@ import Immutable from 'immutable';
 
 class AppStore extends ReduceStore {
   getInitialState() {
-    return [{firstName: 'Edward', lastName: 'Vetter-Drake', address: 'Denver, CO'}];
+    return [{id:0, firstName: 'Edward', lastName: 'Vetter-Drake', address: 'Denver, CO'}];
   }
 
   reduce(state, action) {
@@ -13,10 +13,18 @@ class AppStore extends ReduceStore {
       case ActionTypes.ADD_USER:
         return [ ...state.concat(action.data) ];
       case ActionTypes.DELETE_USER:
-        let oldUser = action.data;
-        let toRemoveIndex = state.findIndex(user => user.firstName === oldUser.firstName && user.lastName === oldUser.lastName && user.address === oldUser.address );
+        let toRemoveIndex = state.findIndex(user => user.id === action.data);
         return [
           ...state.splice(toRemoveIndex, 0),
+        ];
+      case ActionTypes.UPDATE_USER:
+        console.log(action.data);
+        let replUser = action.data;
+        let toReplaceIndex = state.findIndex(user => user.id === replUser.id);
+        return [
+          ...state.slice(0, toReplaceIndex),
+          replUser,
+          ...state.slice(toReplaceIndex + 1)
         ];
       default:
         return state;

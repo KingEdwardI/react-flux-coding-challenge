@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Container } from 'flux/utils';
-import { Link } from 'react-router-dom'
+
 import AppStore from '../stores/AppStore';
-import AppBar from 'material-ui/AppBar';
-import { Toolbar, ToolbarTitle } from 'material-ui/Toolbar';
-import { List, ListItem } from 'material-ui/List';
 
 import UserDisplay from './UserDisplay.jsx';
 class _DisplayUsers extends Component {
@@ -26,7 +23,8 @@ class _DisplayUsers extends Component {
           fName={user.firstName}
           lName={user.lastName}
           addr={user.address}
-          key={user.firstName+user.lastName+user.address}
+          id={user.id}
+          key={user.id}
         />
       )
     })
