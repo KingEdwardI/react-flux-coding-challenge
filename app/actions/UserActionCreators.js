@@ -10,6 +10,14 @@ const UserActionCreators = {
     });
   },
 
+  deleteUser: function(user) {
+    console.log('delete', user)
+    AppDispatcher.dispatch({
+      type: ActionTypes.DELETE_USER,
+      data: user,
+    });
+  }
+
 };
 
 export default UserActionCreators;
