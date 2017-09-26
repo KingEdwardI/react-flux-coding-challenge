@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
 import { Container } from 'flux/utils';
 
 import AppStore from '../stores/AppStore';
+import UserDisplay from './UserDisplay';
 
-import UserDisplay from './UserDisplay.jsx';
-class _DisplayUsers extends Component {
+class _DisplayUsers extends React.Component {
   static getStores() {
     return [AppStore];
   }
@@ -20,14 +19,14 @@ class _DisplayUsers extends Component {
     let users = this.state.users.map(user => { 
       return (
         <UserDisplay
-          fName={user.firstName}
-          lName={user.lastName}
-          addr={user.address}
-          id={user.id}
-          key={user.id}
+          fName={ user.firstName }
+          lName={ user.lastName }
+          addr={ user.address }
+          id={ user.id }
+          key={ user.id }
         />
-      )
-    })
+      );
+    });
 
     return (
       <div>

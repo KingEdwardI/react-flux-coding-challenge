@@ -1,9 +1,8 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router-dom'
+import React from 'react';
 
 import UserActionCreators from '../actions/UserActionCreators';
 
-class UserDisplay extends Component {
+class UserDisplay extends React.Component {
 
   state = {
     fName: this.props.fName,
@@ -25,7 +24,7 @@ class UserDisplay extends Component {
       address: this.state.addr,
       id: this.state.id,
     });
-    this.setState({ updating: false })
+    this.setState({ updating: false });
   }
 
   handleCancel = () => {
@@ -34,7 +33,7 @@ class UserDisplay extends Component {
       fName: this.props.fName,
       lName: this.props.lName,
       addr: this.props.addr,
-    }) 
+    }); 
   }
 
   render() {
@@ -46,8 +45,8 @@ class UserDisplay extends Component {
           <p>{fName}</p>
           <p>{lName}</p>
           <p>{addr}</p>
-          <button onClick={() => { this.handleDelete() }}> DELETE </button>
-          <button onClick={() => {this.setState({updating : true});}}> UPDATE </button>
+          <button onClick={ () => { this.handleDelete(); } }> DELETE </button>
+          <button onClick={ () => {this.setState({ updating : true });} }> UPDATE </button>
     
         </div>
       );
@@ -57,22 +56,22 @@ class UserDisplay extends Component {
         <div>
           <input
             type="text"
-            value={fName}
-            onChange={(evt) => { this.setState({fName: evt.target.value}) }}
+            value={ fName }
+            onChange={ (evt) => { this.setState({ fName: evt.target.value }); } }
           />
           <input
             type="text"
-            value={lName}
-            onChange={(evt) => { this.setState({lName: evt.target.value}) }}
+            value={ lName }
+            onChange={ (evt) => { this.setState({ lName: evt.target.value }); } }
           />
           <input
             type="text"
-            value={addr}
-            onChange={(evt) => { this.setState({addr: evt.target.value}) }}
+            value={ addr }
+            onChange={ (evt) => { this.setState({ addr: evt.target.value }); } }
           />
-          <button onClick={() => { this.handleDelete() }}> DELETE </button>
-          <button onClick={() => { this.handleCancel() }}> CANCEL </button>
-          <button onClick={() => { this.handleUpdate() }}> SAVE </button>
+          <button onClick={ () => { this.handleDelete(); } }> DELETE </button>
+          <button onClick={ () => { this.handleCancel(); } }> CANCEL </button>
+          <button onClick={ () => { this.handleUpdate(); } }> SAVE </button>
         </div>
       );
 
