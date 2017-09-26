@@ -17,6 +17,7 @@ class UserDisplay extends React.Component {
     UserActionCreators.deleteUser(this.state.id);
   }
 
+  // update the user and switch out of 'updating' mode
   handleUpdate = () => {
     UserActionCreators.updateUser({
       firstName: this.state.fName,
@@ -27,6 +28,7 @@ class UserDisplay extends React.Component {
     this.setState({ updating: false });
   }
 
+  // cancel the update and reset the state
   handleCancel = () => {
     this.setState({
       updating: false,
@@ -38,6 +40,7 @@ class UserDisplay extends React.Component {
 
   render() {
     let { updating } = this.state;
+    // render for display
     if (!updating) {
       let { fName, lName, addr } = this.props;
       return (
@@ -49,6 +52,7 @@ class UserDisplay extends React.Component {
     
         </div>
       );
+    // render for update
     } else {
       let { fName, lName, addr } = this.state;
       return (

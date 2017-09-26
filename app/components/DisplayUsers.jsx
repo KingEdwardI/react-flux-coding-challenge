@@ -16,6 +16,7 @@ class _DisplayUsers extends React.Component {
   }
 
   render() {
+    // map the users to a component for display
     let users = this.state.users.map(user => { 
       return (
         <UserDisplay
@@ -28,6 +29,7 @@ class _DisplayUsers extends React.Component {
       );
     });
 
+    // display the users if there are any, otherwise prompt for creation
     return (
       <div className="displayUsers">
         {users.length ? users : 'Please add Users for display'}

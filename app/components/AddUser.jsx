@@ -11,8 +11,10 @@ class AddUser extends React.Component {
     id: this.props.id,
   }
 
+  // handle the submission of the form
   handleSubmit(evt) {
     evt.preventDefault();
+    // increment the id so the next user can be created. Ideally this would be hooked up to a database that creates an id for us.
     this.setState({ id: this.state.id + 1 });
     UserActionCreators.addUser(this.state);
   }
