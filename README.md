@@ -22,3 +22,8 @@ action creators are exported from app/actions/ into the component they will be u
 the app dispatcher handles disptaching the action to the store. -- this could be compared to Redux reducers.
 
 based on the type of the dispatched action, the store is manipulated accordingly in the AppStore.
+
+Blog Post about this project
+----------------------------
+
+https://evetterdrake.wordpress.com/2017/09/26/react-vs-vue-state-management/
